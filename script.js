@@ -1,81 +1,87 @@
 // creating function to get the computer choice
 
-let randomNumber = Math.floor(Math.random() * 100) + 1;
-let choice1 = `rock`;
-let choice2 = `paper`;
-let choice3 = `scissors`;
+const options = 3;
+let randomNumber = Math.floor(Math.random() * options + 1);
+const rock = `rock`;
+const paper = `paper`;
+const scissors = `scissors`;
 
 function getComputerChoice() {
-  if (randomNumber >= 1 && randomNumber <= 33) {
-    return choice1;
-  } else if (randomNumber >= 34 && randomNumber <= 66) {
-    return choice2;
-  } else if (randomNumber >= 67 && randomNumber <= 99) {
-    return choice3;
+  if (randomNumber === 1) {
+    return rock;
+  } else if (randomNumber === 2) {
+    return paper;
+  } else if (randomNumber === 3) {
+    return scissors;
   }
 }
 
-computerChoice = getComputerChoice();
-
 // creating function to get human choice
 
-let userChoice = prompt(`rock, paper or scissors?`, ``);
+let userChoice = prompt(
+  `Choose you weapon:\n\nR for rock, P for paper, S for scissors\n`,
+  ``
+);
 
 userChoice = userChoice.toLowerCase();
 
 function getHumanChoice() {
-  if (userChoice === `rock`) {
-    return choice1;
-  } else if (userChoice === `paper`) {
-    return choice2;
-  } else if (userChoice === `scissors`) {
-    return choice3;
+  if (userChoice === `rock` || userChoice === `r`) {
+    return rock;
+  } else if (userChoice === `paper` || userChoice === `p`) {
+    return paper;
+  } else if (userChoice === `scissors` || userChoice === `s`) {
+    return scissors;
   }
 }
 
-humanChoice = getHumanChoice();
-
-// console.log(randomNumber);
-console.log(computerChoice);
-console.log(humanChoice);
+console.log(`random number: ${randomNumber}`);
+console.log(`computer chose ${getComputerChoice()}`);
+console.log(`you chose ${getHumanChoice()}`);
 
 // creating variables humanScore and computerScore
 // start value 0
 
-const humanScore = 0;
-const computerScore = 0;
+let humanScore = 0;
+let computerScore = 0;
+let roundWinner = ``;
 
 // writing function that declares the winner
 
-const youLose = `You lose!`;
-const youWin = `You win!`;
-const rockScissors = `Rock beats scissors`;
-const scissorsPaper = `Scissors beats paper`;
-const paperRock = `Paper beats rock`;
-const sameChoice = `That's a tie`;
-
-const winnerComputer = computerScore + 1;
-const winnerHuman = humanScore + 1;
-const tie = computerScore && humanScore;
+let computerChoice = getComputerChoice();
+let humanChoice = getHumanChoice();
 
 function playRound() {
-  if (computerChoice == choice1 && humanChoice == choice3) {
-    return `${youLose} ${rockScissors}`;
-  } else if (computerChoice == choice3 && humanChoice == choice2) {
-    return `${youLose} ${scissorsPaper}`;
-  } else if (computerChoice == choice2 && humanChoice == choice1) {
-    return `${youLose} ${paperRock}`;
-  } else if (humanChoice == choice1 && computerChoice == choice3) {
-    return `${youWin} ${rockScissors}`;
-  } else if (humanChoice == choice3 && computerChoice == choice2) {
-    return `${youWin} ${scissorsPaper}`;
-  } else if (humanChoice == choice2 && computerChoice == choice1) {
-    return `${youWin} ${paperRock}`;
+  if (computerChoice === humanChoice) {
+    return (roundWinner = `Tie`);
+  } else if (
+    (computerChoice === `rock` && humanChoice === `scissors`) ||
+    (computerChoice === `scissors` && humanChoice === `paper`) ||
+    (computerChoice === `paper` && humanChoice === `rock`)
+  ) {
+    return (roundWinner = `Computer`);
+  } else if (
+    (humanChoice === `rock` && computerChoice === `scissors`) ||
+    (humanChoice === `scissors` && computerChoice === `paper`) ||
+    (humanChoice === `paper` && computerChoice === `rock`)
+  ) {
+    return (roundWinner = `You`);
   } else {
-    return sameChoice;
+    return (roundWinner = `No weapon selected`);
   }
 }
 
-alert(playRound());
+function updateScore() {
+  if (roundWinner === `Computer`) {
+    return computerScore++;
+  } else if (roundWinner === `You`) {
+    return humanScore++;
+  }
+}
 
-const score = `Computer score is: ${computerScore}, Your score is: ${humanScore}`;
+playRound();
+updateScore();
+
+alert(
+  `Round winner: ${roundWinner}.\nComputer: ${computerScore}. You: ${humanScore}`
+);
