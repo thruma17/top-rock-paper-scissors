@@ -1,3 +1,5 @@
+console.clear();
+
 // creating function to get the computer choice
 
 const options = 3;
@@ -59,22 +61,22 @@ function playRound() {
     (computerChoice === `scissors` && humanChoice === `paper`) ||
     (computerChoice === `paper` && humanChoice === `rock`)
   ) {
-    return (roundWinner = `Computer`);
+    return (roundWinner = `You lose`);
   } else if (
     (humanChoice === `rock` && computerChoice === `scissors`) ||
     (humanChoice === `scissors` && computerChoice === `paper`) ||
     (humanChoice === `paper` && computerChoice === `rock`)
   ) {
-    return (roundWinner = `You`);
+    return (roundWinner = `You win`);
   } else {
     return (roundWinner = `No weapon selected`);
   }
 }
 
 function updateScore() {
-  if (roundWinner === `Computer`) {
+  if (roundWinner === `You lose`) {
     return computerScore++;
-  } else if (roundWinner === `You`) {
+  } else if (roundWinner === `You win`) {
     return humanScore++;
   }
 }
@@ -82,6 +84,4 @@ function updateScore() {
 playRound();
 updateScore();
 
-alert(
-  `Round winner: ${roundWinner}.\nComputer: ${computerScore}. You: ${humanScore}`
-);
+alert(`${roundWinner}!\n\nComputer: ${computerScore}. You: ${humanScore}`);
