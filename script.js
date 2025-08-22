@@ -3,7 +3,10 @@ console.clear();
 // creating function to get the computer choice
 
 const options = 3;
-let randomNumber = Math.floor(Math.random() * options + 1);
+function getRandomNumber() {
+  return Math.floor(Math.random() * options + 1);
+}
+let randomNumber = getRandomNumber();
 const rock = `rock`;
 const paper = `paper`;
 const scissors = `scissors`;
@@ -37,51 +40,59 @@ function getHumanChoice() {
   }
 }
 
-console.log(`random number: ${randomNumber}`);
-console.log(`computer chose ${getComputerChoice()}`);
-console.log(`you chose ${getHumanChoice()}`);
+// console.log(`random number: ${randomNumber}`);
+// console.log(`computer chose ${getComputerChoice()}`);
+// console.log(`user chose ${getHumanChoice()}`);
 
 // creating variables humanScore and computerScore
 // start value 0
 
 let humanScore = 0;
 let computerScore = 0;
+let moves = 0;
 let roundWinner = ``;
 
 // writing function that declares the winner
 
-let computerChoice = getComputerChoice();
-let humanChoice = getHumanChoice();
+const computerChoice = getComputerChoice();
+const humanChoice = getHumanChoice();
 
 function playRound() {
   if (computerChoice === humanChoice) {
-    return (roundWinner = `Tie`);
+    return (roundWinner = `Tie! Try again...`);
   } else if (
     (computerChoice === `rock` && humanChoice === `scissors`) ||
     (computerChoice === `scissors` && humanChoice === `paper`) ||
     (computerChoice === `paper` && humanChoice === `rock`)
   ) {
-    return (roundWinner = `You lose`);
+    return (roundWinner = `You lose, ${computerChoice} beats ${humanChoice}!`);
   } else if (
     (humanChoice === `rock` && computerChoice === `scissors`) ||
     (humanChoice === `scissors` && computerChoice === `paper`) ||
     (humanChoice === `paper` && computerChoice === `rock`)
   ) {
-    return (roundWinner = `You win`);
+    return (roundWinner = `You win, ${humanChoice} beats ${computerChoice}!`);
   } else {
     return (roundWinner = `No weapon selected`);
   }
 }
 
+playRound();
+
+const youLose = /^You lose/;
+const youWin = /^You win/;
+const tie = /^Tie/;
+
 function updateScore() {
-  if (roundWinner === `You lose`) {
+  if (youLose.test(roundWinner)) {
     return computerScore++;
-  } else if (roundWinner === `You win`) {
+  } else if (youWin.test(roundWinner)) {
     return humanScore++;
   }
 }
 
-playRound();
 updateScore();
 
-alert(`${roundWinner}!\n\nComputer: ${computerScore}. You: ${humanScore}`);
+alert(`${roundWinner}\n\nComputer: ${computerScore}. You: ${humanScore}`);
+
+// playGame()
