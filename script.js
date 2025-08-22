@@ -1,7 +1,4 @@
-console.clear();
-
-// create function named getComputerChoice
-// must return random string between: 'rock' 'paper' 'scissors'
+// creating function to get the computer choice
 
 let randomNumber = Math.floor(Math.random() * 100) + 1;
 let choice1 = `rock`;
@@ -20,8 +17,7 @@ function getComputerChoice() {
 
 computerChoice = getComputerChoice();
 
-// create function getHumanChoice
-// getHumanChoice() returns rock paper or scissors
+// creating function to get human choice
 
 let userChoice = prompt(`rock, paper or scissors?`, ``);
 
@@ -39,22 +35,28 @@ function getHumanChoice() {
 
 humanChoice = getHumanChoice();
 
-// create variables humanScore and computerScore
+// console.log(randomNumber);
+console.log(computerChoice);
+console.log(humanChoice);
+
+// creating variables humanScore and computerScore
 // start value 0
 
 const humanScore = 0;
 const computerScore = 0;
 
-// write a function that chooses the winner
-// how? rock beats scissors, scissors beats paper, paper beats rock
-// who wins gets a point
+// writing function that declares the winner
 
 const youLose = `You lose!`;
 const youWin = `You win!`;
 const rockScissors = `Rock beats scissors`;
 const scissorsPaper = `Scissors beats paper`;
 const paperRock = `Paper beats rock`;
-const tie = `That's a tie`;
+const sameChoice = `That's a tie`;
+
+const winnerComputer = computerScore + 1;
+const winnerHuman = humanScore + 1;
+const tie = computerScore && humanScore;
 
 function playRound() {
   if (computerChoice == choice1 && humanChoice == choice3) {
@@ -70,15 +72,10 @@ function playRound() {
   } else if (humanChoice == choice2 && computerChoice == choice1) {
     return `${youWin} ${paperRock}`;
   } else {
-    return tie;
+    return sameChoice;
   }
 }
 
-const winnerComputer = youLose;
-const winnerHuman = youWin;
-
-// console.log(randomNumber);
-console.log(computerChoice);
-console.log(humanChoice);
-
 alert(playRound());
+
+const score = `Computer score is: ${computerScore}, Your score is: ${humanScore}`;
