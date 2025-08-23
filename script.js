@@ -1,4 +1,4 @@
-console.clear();
+// console.clear();
 
 // creating function to get the computer choice
 
