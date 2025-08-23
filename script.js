@@ -83,7 +83,15 @@ function playGame() {
   }
 }
 
-// writing function to let player choose  rival's name
+// writing function to let player choose her/his name and rival's name
+
+let playerName = ``;
+
+function choosePlayerName() {
+  playerName = prompt(`\nWhat's your name?\n`, ``);
+}
+
+choosePlayerName();
 
 let computerName = ``;
 
