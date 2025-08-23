@@ -46,7 +46,7 @@ function playRound(playerChoice, computerChoice) {
       return `${lose}, scissors beat paper!`;
     } else if (computerChoice === `rock`) {
       playerScore++;
-      return `${win}, paper beats scissors!`;
+      return `${win}, paper beats rock!`;
     }
   } else if (playerChoice.toLowerCase() === `s`) {
     if (computerChoice === `rock`) {
@@ -54,7 +54,7 @@ function playRound(playerChoice, computerChoice) {
       return `\n${lose}, rock beats scissors!`;
     } else if (computerChoice === `paper`) {
       playerScore++;
-      return `${win}, scissors beat rock!`;
+      return `${win}, scissors beat paper!`;
     }
   } else return `\nYou need to choose a weapon`;
 }
