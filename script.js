@@ -1,87 +1,75 @@
-console.clear();
+// console.clear();
 
 // creating function to get the computer choice
 
-const options = 3;
-let randomNumber = Math.floor(Math.random() * options + 1);
-const rock = `rock`;
-const paper = `paper`;
-const scissors = `scissors`;
-
 function getComputerChoice() {
+  const options = 3;
+  let randomNumber = Math.floor(Math.random() * options + 1);
   if (randomNumber === 1) {
-    return rock;
+    return `rock`;
   } else if (randomNumber === 2) {
-    return paper;
+    return `paper`;
   } else if (randomNumber === 3) {
-    return scissors;
+    return `scissors`;
   }
 }
 
-// creating function to get human choice
-
-let userChoice = prompt(
-  `Choose you weapon:\n\nR for rock, P for paper, S for scissors\n`,
-  ``
-);
-
-userChoice = userChoice.toLowerCase();
-
-function getHumanChoice() {
-  if (userChoice === `rock` || userChoice === `r`) {
-    return rock;
-  } else if (userChoice === `paper` || userChoice === `p`) {
-    return paper;
-  } else if (userChoice === `scissors` || userChoice === `s`) {
-    return scissors;
-  }
-}
-
-console.log(`random number: ${randomNumber}`);
-console.log(`computer chose ${getComputerChoice()}`);
-console.log(`you chose ${getHumanChoice()}`);
-
-// creating variables humanScore and computerScore
+// creating variables to keep track of score
 // start value 0
+// creating variables for round result
 
-let humanScore = 0;
+let playerScore = 0;
 let computerScore = 0;
-let roundWinner = ``;
+let win = `\nYou win`;
+let lose = `\nYou lose`;
+let tie = `\nTie`;
 
-// writing function that declares the winner
+// writing function to play one round
+// asks player to choose weapon
+// declares the winner
+// adds point to winner
 
-let computerChoice = getComputerChoice();
-let humanChoice = getHumanChoice();
-
-function playRound() {
-  if (computerChoice === humanChoice) {
-    return (roundWinner = `Tie`);
-  } else if (
-    (computerChoice === `rock` && humanChoice === `scissors`) ||
-    (computerChoice === `scissors` && humanChoice === `paper`) ||
-    (computerChoice === `paper` && humanChoice === `rock`)
-  ) {
-    return (roundWinner = `You lose`);
-  } else if (
-    (humanChoice === `rock` && computerChoice === `scissors`) ||
-    (humanChoice === `scissors` && computerChoice === `paper`) ||
-    (humanChoice === `paper` && computerChoice === `rock`)
-  ) {
-    return (roundWinner = `You win`);
-  } else {
-    return (roundWinner = `No weapon selected`);
-  }
+function playRound(playerChoice, computerChoice) {
+  if (playerChoice.toLowerCase() === computerChoice.slice(0, 1))
+    return `${tie}! Try again...`;
+  else if (playerChoice.toLowerCase() === `r`) {
+    if (computerChoice === `paper`) {
+      computerScore++;
+      return `${lose}, paper beats rock!`;
+    } else if (computerChoice === `scissors`) {
+      playerScore++;
+      return `${win}, rock beats scissors!`;
+    }
+  } else if (playerChoice.toLowerCase() === `p`) {
+    if (computerChoice === `scissors`) {
+      computerScore++;
+      return `${lose}, scissors beat paper!`;
+    } else if (computerChoice === `rock`) {
+      playerScore++;
+      return `${win}, paper beats scissors!`;
+    }
+  } else if (playerChoice.toLowerCase() === `s`) {
+    if (computerChoice === `rock`) {
+      computerScore++;
+      return `\n${lose}, rock beats scissors!`;
+    } else if (computerChoice === `paper`) {
+      playerScore++;
+      return `${win}, scissors beat rock!`;
+    }
+  } else return `\nYou need to choose a weapon`;
 }
 
-function updateScore() {
-  if (roundWinner === `You lose`) {
-    return computerScore++;
-  } else if (roundWinner === `You win`) {
-    return humanScore++;
-  }
+// function to start the game
+
+function playGame() {
+  let playerChoice = prompt(
+    `\nChoose you weapon:\n\nR for rock, P for paper, S for scissors\n`
+  );
+  const computerChoice = getComputerChoice();
+  alert(playRound(playerChoice, computerChoice));
+  alert(`\nYour score: ${playerScore}.\n\nComputer score: ${computerScore}\n`);
 }
 
-playRound();
-updateScore();
+// command to start the game
 
-alert(`${roundWinner}!\n\nComputer: ${computerScore}. You: ${humanScore}`);
+playGame();
