@@ -59,7 +59,10 @@ function playRound(playerChoice, computerChoice) {
   } else return `\nYou need to choose a weapon`;
 }
 
-// function to start the game
+// declaring variable to keep track of rounds played
+// writing function to play a game BO5
+
+let moves = 0;
 
 function playGame() {
   let playerChoice = prompt(
@@ -68,6 +71,14 @@ function playGame() {
   const computerChoice = getComputerChoice();
   alert(playRound(playerChoice, computerChoice));
   alert(`\nYour score: ${playerScore}.\n\nComputer score: ${computerScore}\n`);
+  moves++;
+  if (moves < 5) {
+    playGame();
+  } else if (playerScore == computerScore) {
+    playGame();
+  } else {
+    alert(`Game over!`);
+  }
 }
 
 // command to start the game
