@@ -1,4 +1,4 @@
-// console.clear();
+console.clear();
 
 // creating function to get the computer choice
 
@@ -59,6 +59,16 @@ function playRound(playerChoice, computerChoice) {
   } else return `\nYou need to choose a weapon`;
 }
 
+// creating variables to declare game winner
+
+function getRoundWinner() {
+  if (playerScore > computerScore) {
+    return (winner = `\n${win}! Your score is ${playerScore}, ${computerName}'s score is ${computerScore}`);
+  } else if (playerScore > computerScore) {
+    return (winner = `\n${lose}! Your score is ${playerScore}, ${computerName}'s score is ${computerScore}`);
+  }
+}
+
 // declaring variable to keep track of rounds played
 // writing function to play a game BO5
 
@@ -78,8 +88,10 @@ function playGame() {
     playGame();
   } else if (playerScore == computerScore) {
     playGame();
+  } else if (playerScore > computerScore) {
+    alert(winnerPlayer);
   } else {
-    alert(`Game over!`);
+    alert(winnerComputer);
   }
 }
 
@@ -100,6 +112,10 @@ function chooseComputerName() {
 }
 
 chooseComputerName();
+
+let winnerPlayer = `\nThe winner iiis...\n\n...\n\n...${playerName.toUpperCase()}`;
+
+let winnerComputer = `\nThe winner iiis...\n\n...\n\n...${computerName.toUpperCase()}`;
 
 // command to start the game
 
