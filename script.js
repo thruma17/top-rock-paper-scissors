@@ -70,7 +70,9 @@ function playGame() {
   );
   const computerChoice = getComputerChoice();
   alert(playRound(playerChoice, computerChoice));
-  alert(`\nYour score: ${playerScore}.\n\nComputer score: ${computerScore}\n`);
+  alert(
+    `\nYour score: ${playerScore}.\n\n${computerName} score: ${computerScore}\n`
+  );
   moves++;
   if (moves < 5) {
     playGame();
@@ -80,6 +82,16 @@ function playGame() {
     alert(`Game over!`);
   }
 }
+
+// writing function to let player choose  rival's name
+
+let computerName = ``;
+
+function chooseComputerName() {
+  computerName = prompt(`\nChoose a name for the computer\n`, `Giggino`);
+}
+
+chooseComputerName();
 
 // command to start the game
 
