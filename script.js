@@ -20,10 +20,9 @@ function getComputerChoice() {
 
 let playerScore = 0;
 let computerScore = 0;
-let win = `\nYou win`;
-let lose = `\nYou lose`;
-let tie = `\nTie`;
-let score = `\nYour score: ${playerScore}.\n\n${computerName} score: ${computerScore}\n`;
+let win = `You win`;
+let lose = `You lose`;
+let tie = `Tie`;
 
 // writing function to play one round
 // asks player to choose weapon
@@ -32,32 +31,32 @@ let score = `\nYour score: ${playerScore}.\n\n${computerName} score: ${computerS
 
 function playRound(playerChoice, computerChoice) {
   if (playerChoice.toLowerCase() === computerChoice.slice(0, 1))
-    return `${tie}! Try again...\n${score}`;
+    return `${tie}! Try again...`;
   else if (playerChoice.toLowerCase() === `r`) {
     if (computerChoice === `paper`) {
       computerScore++;
-      return `${lose}, paper beats rock!\n${score}`;
+      return `${lose}, paper beats rock!`;
     } else if (computerChoice === `scissors`) {
       playerScore++;
-      return `${win}, rock beats scissors!\n${score}`;
+      return `${win}, rock beats scissors!`;
     }
   } else if (playerChoice.toLowerCase() === `p`) {
     if (computerChoice === `scissors`) {
       computerScore++;
-      return `${lose}, scissors beat paper!\n${score}`;
+      return `${lose}, scissors beat paper!`;
     } else if (computerChoice === `rock`) {
       playerScore++;
-      return `${win}, paper beats rock!\n${score}`;
+      return `${win}, paper beats rock!`;
     }
   } else if (playerChoice.toLowerCase() === `s`) {
     if (computerChoice === `rock`) {
       computerScore++;
-      return `\n${lose}, rock beats scissors!\n${score}`;
+      return `${lose}, rock beats scissors!`;
     } else if (computerChoice === `paper`) {
       playerScore++;
-      return `${win}, scissors beat paper!\n${score}`;
+      return `${win}, scissors beat paper!`;
     }
-  } else return `\nYou need to choose a weapon\n${score}`;
+  } else return `You need to choose a weapon`;
 }
 
 // declaring variable to keep track of rounds played
@@ -67,10 +66,13 @@ let moves = 0;
 
 function playGame() {
   let playerChoice = prompt(
-    `\nChoose you weapon:\n\nR for rock, P for paper, S for scissors\n`
+    `Choose you weapon:\n\nR for rock, P for paper, S for scissors\n`
   );
   const computerChoice = getComputerChoice();
   alert(playRound(playerChoice, computerChoice));
+  alert(
+    `Your score: ${playerScore}.\n\n${computerName} score: ${computerScore}\n`
+  );
   moves++;
   if (moves < 5) {
     playGame();
@@ -88,7 +90,7 @@ function playGame() {
 let playerName = ``;
 
 function choosePlayerName() {
-  playerName = prompt(`\nWhat's your name?\n`, ``);
+  playerName = prompt(`What's your name?\n`, ``);
 }
 
 choosePlayerName();
@@ -96,14 +98,14 @@ choosePlayerName();
 let computerName = ``;
 
 function chooseComputerName() {
-  computerName = prompt(`\nChoose a name for the computer\n`, `Giggino`);
+  computerName = prompt(`Choose a name for the computer\n`, `Giggino`);
 }
 
 chooseComputerName();
 
-let winnerPlayer = `\nThe winner iiis...\n\n...\n\n...${playerName.toUpperCase()}`;
+let winnerPlayer = `The winner iiis...\n\n...\n\n...${playerName.toUpperCase()}`;
 
-let winnerComputer = `\nThe winner iiis...\n\n...\n\n...${computerName.toUpperCase()}`;
+let winnerComputer = `The winner iiis...\n\n...\n\n...${computerName.toUpperCase()}`;
 
 // command to start the game
 
