@@ -23,6 +23,7 @@ let computerScore = 0;
 let win = `\nYou win`;
 let lose = `\nYou lose`;
 let tie = `\nTie`;
+let score = `\nYour score: ${playerScore}.\n\n${computerName} score: ${computerScore}\n`;
 
 // writing function to play one round
 // asks player to choose weapon
@@ -31,32 +32,32 @@ let tie = `\nTie`;
 
 function playRound(playerChoice, computerChoice) {
   if (playerChoice.toLowerCase() === computerChoice.slice(0, 1))
-    return `${tie}! Try again...`;
+    return `${tie}! Try again...\n${score}`;
   else if (playerChoice.toLowerCase() === `r`) {
     if (computerChoice === `paper`) {
       computerScore++;
-      return `${lose}, paper beats rock!`;
+      return `${lose}, paper beats rock!\n${score}`;
     } else if (computerChoice === `scissors`) {
       playerScore++;
-      return `${win}, rock beats scissors!`;
+      return `${win}, rock beats scissors!\n${score}`;
     }
   } else if (playerChoice.toLowerCase() === `p`) {
     if (computerChoice === `scissors`) {
       computerScore++;
-      return `${lose}, scissors beat paper!`;
+      return `${lose}, scissors beat paper!\n${score}`;
     } else if (computerChoice === `rock`) {
       playerScore++;
-      return `${win}, paper beats rock!`;
+      return `${win}, paper beats rock!\n${score}`;
     }
   } else if (playerChoice.toLowerCase() === `s`) {
     if (computerChoice === `rock`) {
       computerScore++;
-      return `\n${lose}, rock beats scissors!`;
+      return `\n${lose}, rock beats scissors!\n${score}`;
     } else if (computerChoice === `paper`) {
       playerScore++;
-      return `${win}, scissors beat paper!`;
+      return `${win}, scissors beat paper!\n${score}`;
     }
-  } else return `\nYou need to choose a weapon`;
+  } else return `\nYou need to choose a weapon\n${score}`;
 }
 
 // declaring variable to keep track of rounds played
@@ -70,9 +71,6 @@ function playGame() {
   );
   const computerChoice = getComputerChoice();
   alert(playRound(playerChoice, computerChoice));
-  alert(
-    `\nYour score: ${playerScore}.\n\n${computerName} score: ${computerScore}\n`
-  );
   moves++;
   if (moves < 5) {
     playGame();
