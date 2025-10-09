@@ -22,6 +22,12 @@ const rockBtn = document.getElementById(`rockBtn`);
 const paperBtn = document.getElementById(`paperBtn`);
 const scissorsBtn = document.getElementById(`scissorsBtn`);
 
+// adding event listeners to buttons
+
+rockBtn.addEventListener(`click`, getPlayerChoice);
+paperBtn.addEventListener(`click`, getPlayerChoice);
+scissorsBtn.addEventListener(`click`, getPlayerChoice);
+
 // creating variables to keep track of score
 // creating variables for round result
 
