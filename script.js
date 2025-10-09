@@ -110,16 +110,16 @@ function choosePlayerName() {
 let computerName = ``;
 
 function chooseComputerName() {
-  computerName = prompt(`Choose a name for the computer\n`, `Giggino`);
+  computerName = prompt(`Choose a name for the computer\n`, `Computer`);
 }
 
 // chooseComputerName(); ++++++++++
 
 // winner declaration
 
-let winnerPlayer = `The winner iiis...\n\n...\n\n...${playerName.toUpperCase()}`;
+let winnerPlayer = `The winner is...\n\n...\n\n...${playerName.toUpperCase()}`;
 
-let winnerComputer = `The winner iiis...\n\n...\n\n...${computerName.toUpperCase()}`;
+let winnerComputer = `The winner is...\n\n...\n\n...${computerName.toUpperCase()}`;
 
 // command to start the game
 
