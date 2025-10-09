@@ -2,19 +2,22 @@ console.clear();
 
 // creating function to get computer's choice
 
+const computerChoice = getComputerChoice();
+
 function getComputerChoice() {
   const options = 3;
   let randomNumber = Math.floor(Math.random() * options + 1);
-  if (randomNumber === 1) {
-    return `rock`;
-  } else if (randomNumber === 2) {
-    return `paper`;
-  } else if (randomNumber === 3) {
-    return `scissors`;
+  switch (randomNumber) {
+    case 1:
+      return "ROCK";
+    case 2:
+      return "PAPER";
+    case 3:
+      return "SCISSORS";
   }
 }
 
-// creating function to get player's choice
+// creating functions to get player's choice
 
 // creating variables for choice buttons
 
@@ -43,45 +46,33 @@ let tie = `Tie`;
 // adds point to winner
 
 function playRound(playerChoice, computerChoice) {
-  if (playerChoice === computerChoice.slice(0, 1))
+  if (playerChoice === computerChoice) {
     return `${tie}! Try again...`;
-  else if (playerChoice === `ROCK`) {
-    if (computerChoice === `paper`) {
-      computerScore++;
-      return `${lose}, paper beats rock!`;
-    } else if (computerChoice === `scissors`) {
-      playerScore++;
-      return `${win}, rock beats scissors!`;
-    }
-  } else if (playerChoice === `PAPER`) {
-    if (computerChoice === `scissors`) {
-      computerScore++;
-      return `${lose}, scissors beat paper!`;
-    } else if (computerChoice === `rock`) {
-      playerScore++;
-      return `${win}, paper beats rock!`;
-    }
-  } else if (playerChoice === `SCISSORS`) {
-    if (computerChoice === `rock`) {
-      computerScore++;
-      return `${lose}, rock beats scissors!`;
-    } else if (computerChoice === `paper`) {
-      playerScore++;
-      return `${win}, scissors beat paper!`;
-    }
-  } else return `You need to choose a weapon`;
+  }
+  if (
+    (playerChoice === "ROCK" && computerChoice === "SCISSORS") ||
+    (playerChoice === "SCISSORS" && computerChoice === "PAPER") ||
+    (playerChoice === "PAPER" && computerChoice === "ROCK")
+  ) {
+    playerScore++;
+    return `${win}, ${playerChoice.toLowerCase()} beats ${computerChoice.toLowerCase()}!`;
+  }
+  if (
+    (computerChoice === "ROCK" && playerChoice === "SCISSORS") ||
+    (computerChoice === "SCISSORS" && playerChoice === "PAPER") ||
+    (computerChoice === "PAPER" && playerChoice === "ROCK")
+  ) {
+    computerScore++;
+    return `${lose}, ${computerChoice.toLowerCase()} beats ${playerChoice.toLowerCase()}!`;
+  }
 }
 
 // writing function to play a game BO5
 
 let moves = 0;
 
-let playerChoice = getPlayerChoice();
-
-const computerChoice = getComputerChoice();
-
 function playGame() {
-  console.log(playRound(playerChoice, computerChoice));
+  console.log(playRound());
   console.log(
     `Your score: ${playerScore}.\n\n${computerName} score: ${computerScore}\n`
   );
@@ -89,7 +80,8 @@ function playGame() {
   if (moves < /*5*/ 1) {
     playGame();
   } else if (playerScore == computerScore) {
-    playGame();
+    // playGame();
+    console.log(`ERROR`);
   } else if (playerScore > computerScore) {
     console.log(winnerPlayer);
   } else {
@@ -107,7 +99,7 @@ function choosePlayerName() {
 
 // choosePlayerName(); ++++++++++
 
-let computerName = ``;
+let computerName = `Computer`;
 
 function chooseComputerName() {
   computerName = prompt(`Choose a name for the computer\n`, `Computer`);
