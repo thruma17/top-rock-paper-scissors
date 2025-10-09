@@ -74,7 +74,7 @@ function playGame() {
     `Your score: ${playerScore}.\n\n${computerName} score: ${computerScore}\n`
   );
   moves++;
-  if (moves < 5) {
+  if (moves < /*5*/ 1) {
     playGame();
   } else if (playerScore == computerScore) {
     playGame();
