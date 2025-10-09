@@ -45,7 +45,7 @@ let tie = `Tie`;
 function playRound(playerChoice, computerChoice) {
   if (playerChoice === computerChoice.slice(0, 1))
     return `${tie}! Try again...`;
-  else if (playerChoice === `r`) {
+  else if (playerChoice === `ROCK`) {
     if (computerChoice === `paper`) {
       computerScore++;
       return `${lose}, paper beats rock!`;
@@ -53,7 +53,7 @@ function playRound(playerChoice, computerChoice) {
       playerScore++;
       return `${win}, rock beats scissors!`;
     }
-  } else if (playerChoice === `p`) {
+  } else if (playerChoice === `PAPER`) {
     if (computerChoice === `scissors`) {
       computerScore++;
       return `${lose}, scissors beat paper!`;
@@ -61,7 +61,7 @@ function playRound(playerChoice, computerChoice) {
       playerScore++;
       return `${win}, paper beats rock!`;
     }
-  } else if (playerChoice === `s`) {
+  } else if (playerChoice === `SCISSORS`) {
     if (computerChoice === `rock`) {
       computerScore++;
       return `${lose}, rock beats scissors!`;
