@@ -1,6 +1,6 @@
 console.clear();
 
-// creating function to get the computer choice
+// creating function to get computer's choice
 
 function getComputerChoice() {
   const options = 3;
@@ -13,6 +13,14 @@ function getComputerChoice() {
     return `scissors`;
   }
 }
+
+// creating function to get player's choice
+
+// creating variables for choice buttons
+
+const rockBtn = document.getElementById(`rockBtn`);
+const paperBtn = document.getElementById(`paperBtn`);
+const scissorsBtn = document.getElementById(`scissorsBtn`);
 
 // creating variables to keep track of score
 // creating variables for round result
@@ -29,9 +37,9 @@ let tie = `Tie`;
 // adds point to winner
 
 function playRound(playerChoice, computerChoice) {
-  if (playerChoice.toLowerCase() === computerChoice.slice(0, 1))
+  if (playerChoice === computerChoice.slice(0, 1))
     return `${tie}! Try again...`;
-  else if (playerChoice.toLowerCase() === `r`) {
+  else if (playerChoice === `r`) {
     if (computerChoice === `paper`) {
       computerScore++;
       return `${lose}, paper beats rock!`;
@@ -39,7 +47,7 @@ function playRound(playerChoice, computerChoice) {
       playerScore++;
       return `${win}, rock beats scissors!`;
     }
-  } else if (playerChoice.toLowerCase() === `p`) {
+  } else if (playerChoice === `p`) {
     if (computerChoice === `scissors`) {
       computerScore++;
       return `${lose}, scissors beat paper!`;
@@ -47,7 +55,7 @@ function playRound(playerChoice, computerChoice) {
       playerScore++;
       return `${win}, paper beats rock!`;
     }
-  } else if (playerChoice.toLowerCase() === `s`) {
+  } else if (playerChoice === `s`) {
     if (computerChoice === `rock`) {
       computerScore++;
       return `${lose}, rock beats scissors!`;
@@ -62,13 +70,13 @@ function playRound(playerChoice, computerChoice) {
 
 let moves = 0;
 
+let playerChoice = getPlayerChoice();
+
+const computerChoice = getComputerChoice();
+
 function playGame() {
-  let playerChoice = prompt(
-    `Choose you weapon:\n\nR for rock, P for paper, S for scissors\n`
-  );
-  const computerChoice = getComputerChoice();
-  alert(playRound(playerChoice, computerChoice));
-  alert(
+  console.log(playRound(playerChoice, computerChoice));
+  console.log(
     `Your score: ${playerScore}.\n\n${computerName} score: ${computerScore}\n`
   );
   moves++;
@@ -77,9 +85,9 @@ function playGame() {
   } else if (playerScore == computerScore) {
     playGame();
   } else if (playerScore > computerScore) {
-    alert(winnerPlayer);
+    console.log(winnerPlayer);
   } else {
-    alert(winnerComputer);
+    console.log(winnerComputer);
   }
 }
 
@@ -91,7 +99,7 @@ function choosePlayerName() {
   playerName = prompt(`What's your name?\n`, ``);
 }
 
-// choosePlayerName();
+// choosePlayerName(); ++++++++++
 
 let computerName = ``;
 
@@ -99,7 +107,7 @@ function chooseComputerName() {
   computerName = prompt(`Choose a name for the computer\n`, `Giggino`);
 }
 
-// chooseComputerName();
+// chooseComputerName(); ++++++++++
 
 // winner declaration
 
