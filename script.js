@@ -20,18 +20,22 @@ function chooseComputerName() {
 
 // creating function to get computer's choice
 
-const computerChoice = getComputerChoice();
+let computerChoice = ``;
 
 function getComputerChoice() {
-  const options = 3;
-  let randomNumber = Math.floor(Math.random() * options + 1);
+  let randomNumber = random(3);
   switch (randomNumber) {
     case 1:
-      return "ROCK";
+      computerChoice = "ROCK";
+      break;
     case 2:
-      return "PAPER";
+      computerChoice = "PAPER";
+      break;
     case 3:
-      return "SCISSORS";
+      computerChoice = "SCISSORS";
+      break;
+    default:
+      break;
   }
 }
 
@@ -50,8 +54,9 @@ scissorsBtn.addEventListener(`click`, () => buttonClicked(`SCISSORS`));
 // creating function to get player's choice
 
 function buttonClicked(playerChoice) {
-  playRound(playerChoice, computerChoice);
-  console.log(`Clicked`);
+  playRound(playerChoice, getComputerChoice());
+  console.log(playerChoice);
+  console.log(computerChoice);
 }
 
 // creating variables to keep track of score
@@ -87,28 +92,28 @@ function playRound(playerChoice, computerChoice) {
   }
 }
 
-// writing function to play a game BO5
-
-let moves = 0;
+// writing function to play a game TO5
 
 function playGame() {
   playRound(playerChoice, computerChoice);
   console.log(
     `Your score: ${playerScore}.\n\n${computerName} score: ${computerScore}\n`
   );
-  moves++;
-  if (moves < /*5*/ 1) {
+  if (playerScore < 5 && computerScore < 5) {
     playGame();
-  } else if (playerScore == computerScore) {
-    // playGame();
-    console.log(`ERROR`);
-  } else if (playerScore > computerScore) {
-    console.log(`The winner is...\n\n...\n\n...${playerName.toUpperCase()}`);
   } else {
-    console.log(`The winner is...\n\n...\n\n...${computerName.toUpperCase()}`);
+    gameOver();
   }
 }
 
-// command to start the game
+/* Helper functions */
 
-// playGame();
+function random(options) {
+  return Math.floor(Math.random() * options + 1);
+}
+
+//  if (playerScore > computerScore) {
+//     console.log(`The winner is...\n\n...\n\n...${playerName.toUpperCase()}`);
+//   } if () {
+//     console.log(`The winner is...\n\n...\n\n...${computerName.toUpperCase()}`);
+//   }
