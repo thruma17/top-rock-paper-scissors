@@ -15,7 +15,6 @@ function getComputerChoice() {
 }
 
 // creating variables to keep track of score
-// start value 0
 // creating variables for round result
 
 let playerScore = 0;
@@ -59,7 +58,6 @@ function playRound(playerChoice, computerChoice) {
   } else return `You need to choose a weapon`;
 }
 
-// declaring variable to keep track of rounds played
 // writing function to play a game BO5
 
 let moves = 0;
@@ -102,6 +100,8 @@ function chooseComputerName() {
 }
 
 chooseComputerName();
+
+// winner declaration
 
 let winnerPlayer = `The winner iiis...\n\n...\n\n...${playerName.toUpperCase()}`;
 
