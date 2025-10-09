@@ -91,7 +91,7 @@ function choosePlayerName() {
   playerName = prompt(`What's your name?\n`, ``);
 }
 
-choosePlayerName();
+// choosePlayerName();
 
 let computerName = ``;
 
@@ -99,7 +99,7 @@ function chooseComputerName() {
   computerName = prompt(`Choose a name for the computer\n`, `Giggino`);
 }
 
-chooseComputerName();
+// chooseComputerName();
 
 // winner declaration
 
