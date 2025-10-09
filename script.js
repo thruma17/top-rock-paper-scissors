@@ -36,9 +36,9 @@ scissorsBtn.addEventListener(`click`, getPlayerChoice);
 
 let playerScore = 0;
 let computerScore = 0;
-let win = `You win`;
-let lose = `You lose`;
-let tie = `Tie`;
+let win = `You win, ${playerChoice.toLowerCase()} beats ${computerChoice.toLowerCase()}!`;
+let lose = `You lose, ${computerChoice.toLowerCase()} beats ${playerChoice.toLowerCase()}!`;
+let tie = `Tie! Try again...`;
 
 // writing function to play one round
 // asks player to choose weapon
@@ -47,7 +47,7 @@ let tie = `Tie`;
 
 function playRound(playerChoice, computerChoice) {
   if (playerChoice === computerChoice) {
-    return `${tie}! Try again...`;
+    return `${tie}`;
   }
   if (
     (playerChoice === "ROCK" && computerChoice === "SCISSORS") ||
@@ -55,7 +55,7 @@ function playRound(playerChoice, computerChoice) {
     (playerChoice === "PAPER" && computerChoice === "ROCK")
   ) {
     playerScore++;
-    return `${win}, ${playerChoice.toLowerCase()} beats ${computerChoice.toLowerCase()}!`;
+    return `${win}`;
   }
   if (
     (computerChoice === "ROCK" && playerChoice === "SCISSORS") ||
@@ -63,7 +63,7 @@ function playRound(playerChoice, computerChoice) {
     (computerChoice === "PAPER" && playerChoice === "ROCK")
   ) {
     computerScore++;
-    return `${lose}, ${computerChoice.toLowerCase()} beats ${playerChoice.toLowerCase()}!`;
+    return `${lose}`;
   }
 }
 
