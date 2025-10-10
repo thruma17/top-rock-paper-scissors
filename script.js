@@ -78,6 +78,7 @@ function buttonClicked(playerChoice) {
     updateScore();
   } else {
     roundWinnerMessage.textContent = "Game over!";
+    roundChoicesMessage.textContent = `Aggiorna la pagina per una nuova partita`;
   }
 }
 
