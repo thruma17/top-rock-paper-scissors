@@ -14,23 +14,23 @@ let roundWinner = ``;
 
 function playRound(playerChoice, computerChoice) {
   if (playerChoice === computerChoice) {
-    roundWinner = `Tie! Try again...`;
+    roundWinner = `Pareggio! Prova ancora...`;
   }
   if (
-    (playerChoice === "ROCK" && computerChoice === "SCISSORS") ||
-    (playerChoice === "SCISSORS" && computerChoice === "PAPER") ||
-    (playerChoice === "PAPER" && computerChoice === "ROCK")
+    (playerChoice === "SASSO" && computerChoice === "FORBICE") ||
+    (playerChoice === "FORBICE" && computerChoice === "CARTA") ||
+    (playerChoice === "CARTA" && computerChoice === "SASSO")
   ) {
     playerScore++;
-    roundWinner = `You win, ${playerChoice.toLowerCase()} beats ${computerChoice.toLowerCase()}!`;
+    roundWinner = `Hai vinto, ${playerChoice.toLowerCase()} batte ${computerChoice.toLowerCase()}!`;
   }
   if (
-    (computerChoice === "ROCK" && playerChoice === "SCISSORS") ||
-    (computerChoice === "SCISSORS" && playerChoice === "PAPER") ||
-    (computerChoice === "PAPER" && playerChoice === "ROCK")
+    (computerChoice === "SASSO" && playerChoice === "FORBICE") ||
+    (computerChoice === "FORBICE" && playerChoice === "CARTA") ||
+    (computerChoice === "CARTA" && playerChoice === "SASSO")
   ) {
     computerScore++;
-    roundWinner = `You lose, ${computerChoice.toLowerCase()} beats ${playerChoice.toLowerCase()}!`;
+    roundWinner = `Hai perso, ${computerChoice.toLowerCase()} batte ${playerChoice.toLowerCase()}!`;
   }
   console.log(roundWinner);
   console.log(playerScore);
@@ -44,11 +44,11 @@ function getComputerChoice() {
   let randomNumber = random(3);
   switch (randomNumber) {
     case 1:
-      return "ROCK";
+      return "CARTA";
     case 2:
-      return "PAPER";
+      return "FORBICE";
     case 3:
-      return "SCISSORS";
+      return "SASSO";
   }
 }
 
@@ -60,9 +60,9 @@ const scissorsBtn = document.getElementById(`scissorsBtn`);
 
 // adding event listeners to buttons
 
-rockBtn.addEventListener(`click`, () => buttonClicked(`ROCK`));
-paperBtn.addEventListener(`click`, () => buttonClicked(`PAPER`));
-scissorsBtn.addEventListener(`click`, () => buttonClicked(`SCISSORS`));
+paperBtn.addEventListener(`click`, () => buttonClicked(`CARTA`));
+scissorsBtn.addEventListener(`click`, () => buttonClicked(`FORBICE`));
+rockBtn.addEventListener(`click`, () => buttonClicked(`SASSO`));
 
 // creating function to get player's choice
 
@@ -85,11 +85,11 @@ const computerScorePara = document.getElementById("computerScore");
 function updateScore() {
   switch (roundWinner) {
     case `tie`:
-      return (scoreInfo.textContent = "It's a tie!");
+      return (scoreInfo.textContent = "Pareggio!");
     case `player`:
-      return (scoreInfo.textContent = "You won!");
-    case `tie`:
-      return (scoreInfo.textContent = "You lost!");
+      return (scoreInfo.textContent = "Hai vinto!");
+    case `computer`:
+      return (scoreInfo.textContent = "Hai perso!");
   }
 
   playerScorePara.textContent = `${playerScore}`;
