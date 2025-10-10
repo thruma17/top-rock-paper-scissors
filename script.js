@@ -76,7 +76,7 @@ function isGameOver() {
 function gameOverMessage() {
   // show game over message
   roundWinnerMessage.textContent = "Game over!";
-  roundChoicesMessage.textContent = `Inizia una nuova partita`;
+  roundChoicesMessage.textContent = `Aggiorna la pagina per una nuova partita`;
 
   // declare game winner
   if (playerScore === 5) {
@@ -164,6 +164,21 @@ function updateChoices(playerChoice, computerChoice) {
 function updateScore() {
   playerScorePara.textContent = `${playerScore}`;
   computerScorePara.textContent = `${computerScore}`;
+}
+
+// creating function to restart game
+
+function restartGame() {
+  playerScore = 0;
+  computerScore = 0;
+  scoreInfo.textContent = "Scegli la tua temibile arma";
+  scoreMessage.textContent = "Vince chi arriva prima a 5";
+  playerScorePara.textContent = "Player: 0";
+  computerScorePara.textContent = "Computer: 0";
+  playerSign.textContent = "❔";
+  computerSign.textContent = "❔";
+  endgameModal.classList.remove("active");
+  overlay.classList.remove("active");
 }
 
 /* ---------- Helper functions ---------- */
