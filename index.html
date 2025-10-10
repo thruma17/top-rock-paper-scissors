@@ -9,37 +9,41 @@
   <body>
     <main>
       <header class="header">
-        <h1 class="title">ROCK PAPER SCISSORS</h1>
+        <h1 class="title">CARTA FORBICE SASSO</h1>
       </header>
       <div class="scoreboard">
-        <h2 class="score-info" id="scoreInfo">Choose your weapon</h2>
+        <h2 class="score-info" id="scoreInfo">Scegli la tua temibile arma</h2>
         <h3 class="score-message" id="scoreMessage">
-          First to score 5 points wins the game
+          Vince chi arriva prima a 5
         </h3>
-        <div class="scores-container">
-          <div class="score-box">
-            <div class="sign" id="playerSign">
-              <img src="images/question-mark.png" alt="?" />
-            </div>
-            <p class="score" id="playerScore">Player: 0</p>
+        <div class="choice-container">
+          <div class="weapon box" id="playerSign">
+            <img src="images/question-mark.png" alt="?" />
           </div>
-          <div class="score-box">
-            <div class="sign" id="computerSign">
-              <img src="images/question-mark.png" alt="?" />
-            </div>
-            <p class="score" id="computerScore">Computer: 0</p>
+          <div class="weapon box" id="computerSign">
+            <img src="images/question-mark.png" alt="?" />
+          </div>
+        </div>
+        <div class="score-container">
+          <div class="score box">
+            <p class="players">Tu:</p>
+            <p class="score" id="playerScore">0</p>
+          </div>
+          <div class="score box">
+            <p class="players">Computer:</p>
+            <p class="score" id="computerScore">0</p>
           </div>
         </div>
       </div>
       <div id="buttons" class="weapons-container">
         <button id="rockBtn" class="btn btn-square">
-          <div class="sign"><img src="images/rock.png" alt="ROCK" /></div>
+          <div class="weapon"><img src="images/rock.png" alt="ROCK" /></div>
         </button>
         <button id="paperBtn" class="btn btn-square">
-          <div class="sign"><img src="images/paper.png" alt="PAPER" /></div>
+          <div class="weapon"><img src="images/paper.png" alt="PAPER" /></div>
         </button>
         <button id="scissorsBtn" class="btn btn-square">
-          <div class="sign">
+          <div class="weapon">
             <img src="images/scissors.png" alt="SCISSORS" />
           </div>
         </button>
@@ -63,7 +67,7 @@
       </p>
       <div id="credits" class="credits">
         <p>
-          Icons created by
+          Icone create da
           <a href="https://www.flaticon.com/authors/freepik" title="rock icons"
             >Freepik</a
           >

@@ -12,13 +12,24 @@ main {
   flex-direction: column;
 }
 
-div.scores-container,
+div.choice-container,
+div.score-container,
+div.score.box,
 div.weapons-container {
   display: flex;
   justify-content: center;
 }
 
-div.sign img {
+div.box {
+  margin: 10px;
+  width: 15vw;
+}
+
+p.players {
+  margin-right: 1rem;
+}
+
+div.weapon img {
   margin: 1rem;
   max-width: 10vw;
   max-height: 10vh;

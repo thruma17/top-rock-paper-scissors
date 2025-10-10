@@ -92,8 +92,8 @@ function updateScore() {
       return (scoreInfo.textContent = "You lost!");
   }
 
-  playerScorePara.textContent = `Player: ${playerScore}`;
-  computerScorePara.textContent = `Computer: ${computerScore}`;
+  playerScorePara.textContent = `${playerScore}`;
+  computerScorePara.textContent = `${computerScore}`;
 }
 
 // writing function to play a game TO5
