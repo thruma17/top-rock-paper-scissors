@@ -43,7 +43,6 @@ function playRound(playerChoice, computerChoice) {
     computerScore++;
     roundWinner = `roundWComputer`;
   }
-  updateRoundWinner(roundWinner, playerChoice, computerChoice);
 }
 
 // creating function to get computer's choice
@@ -66,11 +65,15 @@ paperBtn.addEventListener(`click`, () => buttonClicked(`CARTA`));
 scissorsBtn.addEventListener(`click`, () => buttonClicked(`FORBICE`));
 rockBtn.addEventListener(`click`, () => buttonClicked(`SASSO`));
 
-// remove event listeners when game is over
+// creating function to check if game is over
+
+function isGameOver() {
+  return playerScore === 5 || computerScore === 5;
+}
 
 // creating function for game over
 
-function gameOver() {
+function gameOverMessage() {
   // show game over message
   roundWinnerMessage.textContent = "Game over!";
   roundChoicesMessage.textContent = `Inizia una nuova partita`;
@@ -83,18 +86,26 @@ function gameOver() {
     computerWeapon.src = "images/trophy.png";
     playerWeapon.src = "images/loser.png";
   }
+
+  // change buttons to restart
 }
 
-// creating function to get player's choice
+// creating function to play game
 
 function buttonClicked(playerChoice) {
-  if (playerScore === 5 || computerScore === 5) {
-    gameOver();
-  } else {
-    computerChoice = getComputerChoice();
-    playRound(playerChoice, computerChoice);
-    updateChoices(playerChoice, computerChoice);
-    updateScore();
+  if (isGameOver()) {
+    gameOverMessage();
+    return;
+  }
+
+  computerChoice = getComputerChoice();
+  playRound(playerChoice, computerChoice);
+  updateRoundWinner(roundWinner, playerChoice, computerChoice);
+  updateChoices(playerChoice, computerChoice);
+  updateScore();
+
+  if (isGameOver()) {
+    gameOverMessage();
   }
 }
 
