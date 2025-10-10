@@ -17,9 +17,6 @@ const scissorsBtn = document.getElementById("scissorsBtn");
 let playerScore = 0;
 let computerScore = 0;
 let roundWinner = ``;
-const roundTie = `Pareggio! Prova ancora...`;
-const roundWPlayer = `Hai vinto!`;
-const roundWComputer = `Hai perso!`;
 
 // writing function to play one round
 // asks player to choose weapon
@@ -28,7 +25,7 @@ const roundWComputer = `Hai perso!`;
 
 function playRound(playerChoice, computerChoice) {
   if (playerChoice === computerChoice) {
-    roundWinner = roundTie;
+    roundWinner = `roundTie`;
   }
   if (
     (playerChoice === "SASSO" && computerChoice === "FORBICE") ||
@@ -36,7 +33,7 @@ function playRound(playerChoice, computerChoice) {
     (playerChoice === "CARTA" && computerChoice === "SASSO")
   ) {
     playerScore++;
-    roundWinner = roundWPlayer;
+    roundWinner = `roundWPlayer`;
     /*`, ${playerChoice.toLowerCase()} batte ${computerChoice.toLowerCase()}!`*/
   }
   if (
@@ -45,10 +42,10 @@ function playRound(playerChoice, computerChoice) {
     (computerChoice === "CARTA" && playerChoice === "SASSO")
   ) {
     computerScore++;
-    roundWinner = roundWComputer;
+    roundWinner = `roundWComputer`;
     /*`, ${computerChoice.toLowerCase()} batte ${playerChoice.toLowerCase()}!` */
   }
-  updateScore();
+  updateRoundWinner(roundWinner, playerChoice, computerChoice);
 }
 
 // creating function to get computer's choice
@@ -77,7 +74,6 @@ function buttonClicked(playerChoice) {
   if (playerScore < 5 && computerScore < 5) {
     computerChoice = getComputerChoice();
     playRound(playerChoice, computerChoice);
-    updateRoundWinner();
     updateChoices(playerChoice, computerChoice);
     updateScore();
   } else {
@@ -87,16 +83,23 @@ function buttonClicked(playerChoice) {
 
 // creating function to announce round winner
 
-function updateRoundWinner() {
+function updateRoundWinner(roundWinner, playerChoice, computerChoice) {
   switch (roundWinner) {
-    case `${roundTie}`:
-      roundWinnerMessage.textContent = "Pareggio!";
+    case `roundTie`:
+      roundWinnerMessage.textContent = "Pareggio! Prova ancora...";
+      roundChoicesMessage.textContent = `Stessa arma`;
       break;
-    case `${roundWPlayer}`:
-      roundWinnerMessage.textContent = "Hai vinto!";
+    case `roundWPlayer`:
+      roundWinnerMessage.textContent = "Hai vinto il punto!";
+      roundChoicesMessage.textContent = `${capitalizeFirstLetter(
+        playerChoice
+      )} batte ${computerChoice.toLowerCase()}`;
       break;
-    case `${roundWComputer}`:
-      roundWinnerMessage.textContent = "Hai perso!";
+    case `roundWComputer`:
+      roundWinnerMessage.textContent = "Hai perso il punto!";
+      roundChoicesMessage.textContent = `${capitalizeFirstLetter(
+        computerChoice
+      )} batte ${playerChoice.toLowerCase()}`;
       break;
   }
 }
@@ -162,14 +165,12 @@ function updateScore() {
 //   }
 // }
 
-/* Helper functions */
+/* ---------- Helper functions ---------- */
 
 function random(options) {
   return Math.floor(Math.random() * options + 1);
 }
 
-//  if (playerScore > computerScore) {
-//     console.log(`The winner is...\n\n...\n\n...you}`);
-//   } if () {
-//     console.log(`The winner is...\n\n...\n\n...computer`);
-//   }
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
