@@ -70,7 +70,9 @@ function buttonClicked(playerChoice) {
     computerChoice = getComputerChoice();
     console.log(`Player: ${playerChoice}`);
     console.log(`Computer: ${computerChoice}`);
-    // playRound(playerChoice, computerChoice);
+    playRound(playerChoice, computerChoice);
+  } else {
+    console.log(`Game Over!`);
   }
 }
 
