@@ -1,23 +1,5 @@
 console.clear();
 
-// writing function to let player choose her/his name and rival's name
-
-let playerName = ``;
-
-function choosePlayerName() {
-  playerName = prompt(`What's your name?\n`, ``);
-}
-
-// choosePlayerName(); ++++++++++
-
-let computerName = `Computer`;
-
-function chooseComputerName() {
-  computerName = prompt(`Choose a name for the computer\n`, `Computer`);
-}
-
-// chooseComputerName(); ++++++++++
-
 // creating function to get computer's choice
 
 let computerChoice = ``;
@@ -97,7 +79,7 @@ function playRound(playerChoice, computerChoice) {
 function playGame() {
   playRound(playerChoice, computerChoice);
   console.log(
-    `Your score: ${playerScore}.\n\n${computerName} score: ${computerScore}\n`
+    `Your score: ${playerScore}.\n\nComputer score: ${computerScore}\n`
   );
   if (playerScore < 5 && computerScore < 5) {
     playGame();
@@ -113,7 +95,7 @@ function random(options) {
 }
 
 //  if (playerScore > computerScore) {
-//     console.log(`The winner is...\n\n...\n\n...${playerName.toUpperCase()}`);
+//     console.log(`The winner is...\n\n...\n\n...you}`);
 //   } if () {
-//     console.log(`The winner is...\n\n...\n\n...${computerName.toUpperCase()}`);
+//     console.log(`The winner is...\n\n...\n\n...computer`);
 //   }
