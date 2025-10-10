@@ -14,7 +14,7 @@ let roundWinner = ``;
 
 function playRound(playerChoice, computerChoice) {
   if (playerChoice === computerChoice) {
-    return (roundWinner = `Tie! Try again...`);
+    roundWinner = `Tie! Try again...`;
   }
   if (
     (playerChoice === "ROCK" && computerChoice === "SCISSORS") ||
