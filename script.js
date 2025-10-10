@@ -5,8 +5,8 @@ const scoreInfo = document.getElementById("scoreInfo");
 const scoreMessage = document.getElementById("scoreMessage");
 const playerScorePara = document.getElementById("playerScore");
 const computerScorePara = document.getElementById("computerScore");
-const playerSign = document.getElementById("playerSign");
-const computerSign = document.getElementById("computerSign");
+const playerWeapon = document.getElementById("playerWeapon");
+const computerWeapon = document.getElementById("computerWeapon");
 const rockBtn = document.getElementById("rockBtn");
 const paperBtn = document.getElementById("paperBtn");
 const scissorsBtn = document.getElementById("scissorsBtn");
@@ -80,10 +80,51 @@ function buttonClicked(playerChoice) {
     console.log(`Player: ${playerChoice}`);
     console.log(`Computer: ${computerChoice}`);
     playRound(playerChoice, computerChoice);
+    updateChoices(playerChoice, computerChoice);
   } else {
-    console.log(`Game Over!`);
+    console.log(`Game over!`);
   }
 }
+
+// creating function to update round choices images
+
+function updateChoices(playerChoice, computerChoice) {
+  switch (playerChoice) {
+    case "CARTA":
+      playerWeapon.src = "images/paper.png";
+      break;
+    case "FORBICE":
+      playerWeapon.src = "images/scissors.png";
+      break;
+    case "SASSO":
+      playerWeapon.src = "images/rock.png";
+      break;
+  }
+  switch (computerChoice) {
+    case "CARTA":
+      computerWeapon.src = "images/paper.png";
+      break;
+    case "FORBICE":
+      computerWeapon.src = "images/scissors.png";
+      break;
+    case "SASSO":
+      computerWeapon.src = "images/rock.png";
+      break;
+  }
+}
+
+// creating function for game over
+
+// function isGameOver() {
+// switch (playerScore > computerScore) {
+//       case `true`:
+//         playerWeapon.src = "images/trophy.png";
+//         break;
+//       case `false`:
+//         computerWeapon.src = "images/loser.png";
+//         break;
+//     }
+// }
 
 // creating function to update score
 
