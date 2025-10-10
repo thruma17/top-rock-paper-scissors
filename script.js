@@ -1,5 +1,16 @@
 console.clear();
 
+/* DOM variables */
+const scoreInfo = document.getElementById("scoreInfo");
+const scoreMessage = document.getElementById("scoreMessage");
+const playerScorePara = document.getElementById("playerScore");
+const computerScorePara = document.getElementById("computerScore");
+const playerSign = document.getElementById("playerSign");
+const computerSign = document.getElementById("computerSign");
+const rockBtn = document.getElementById("rockBtn");
+const paperBtn = document.getElementById("paperBtn");
+const scissorsBtn = document.getElementById("scissorsBtn");
+
 // creating variables to keep track of score
 // creating variables for round result
 
@@ -52,12 +63,6 @@ function getComputerChoice() {
   }
 }
 
-// creating variables for choice buttons
-
-const rockBtn = document.getElementById(`rockBtn`);
-const paperBtn = document.getElementById(`paperBtn`);
-const scissorsBtn = document.getElementById(`scissorsBtn`);
-
 // adding event listeners to buttons
 
 paperBtn.addEventListener(`click`, () => buttonClicked(`CARTA`));
@@ -78,9 +83,6 @@ function buttonClicked(playerChoice) {
 }
 
 // creating function to update score
-
-const playerScorePara = document.getElementById("playerScore");
-const computerScorePara = document.getElementById("computerScore");
 
 function updateScore() {
   switch (roundWinner) {
