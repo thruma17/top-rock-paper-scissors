@@ -1,23 +1,53 @@
 console.clear();
 
-// creating function to get computer's choice
+// creating variables to keep track of score
+// creating variables for round result
 
-let computerChoice = ``;
+let playerScore = 0;
+let computerScore = 0;
+let roundWinner = ``;
+
+// writing function to play one round
+// asks player to choose weapon
+// declares the winner
+// adds point to winner
+
+function playRound(playerChoice, computerChoice) {
+  if (playerChoice === computerChoice) {
+    return (roundWinner = `Tie! Try again...`);
+  }
+  if (
+    (playerChoice === "ROCK" && computerChoice === "SCISSORS") ||
+    (playerChoice === "SCISSORS" && computerChoice === "PAPER") ||
+    (playerChoice === "PAPER" && computerChoice === "ROCK")
+  ) {
+    playerScore++;
+    roundWinner = `You win, ${playerChoice.toLowerCase()} beats ${computerChoice.toLowerCase()}!`;
+  }
+  if (
+    (computerChoice === "ROCK" && playerChoice === "SCISSORS") ||
+    (computerChoice === "SCISSORS" && playerChoice === "PAPER") ||
+    (computerChoice === "PAPER" && playerChoice === "ROCK")
+  ) {
+    computerScore++;
+    roundWinner = `You lose, ${computerChoice.toLowerCase()} beats ${playerChoice.toLowerCase()}!`;
+  }
+  console.log(roundWinner);
+  console.log(playerScore);
+  console.log(computerScore);
+}
+
+// creating function to get computer's choice
 
 function getComputerChoice() {
   let randomNumber = random(3);
   switch (randomNumber) {
     case 1:
-      computerChoice = "ROCK";
-      break;
+      return "ROCK";
     case 2:
-      computerChoice = "PAPER";
-      break;
+      return "PAPER";
     case 3:
-      computerChoice = "SCISSORS";
-      break;
-    default:
-      break;
+      return "SCISSORS";
   }
 }
 
@@ -36,57 +66,27 @@ scissorsBtn.addEventListener(`click`, () => buttonClicked(`SCISSORS`));
 // creating function to get player's choice
 
 function buttonClicked(playerChoice) {
-  playRound(playerChoice, getComputerChoice());
-  console.log(playerChoice);
-  console.log(computerChoice);
-}
-
-// creating variables to keep track of score
-// creating variables for round result
-
-let playerScore = 0;
-let computerScore = 0;
-
-// writing function to play one round
-// asks player to choose weapon
-// declares the winner
-// adds point to winner
-
-function playRound(playerChoice, computerChoice) {
-  if (playerChoice === computerChoice) {
-    return `Tie! Try again...`;
-  }
-  if (
-    (playerChoice === "ROCK" && computerChoice === "SCISSORS") ||
-    (playerChoice === "SCISSORS" && computerChoice === "PAPER") ||
-    (playerChoice === "PAPER" && computerChoice === "ROCK")
-  ) {
-    playerScore++;
-    return `You win, ${playerChoice.toLowerCase()} beats ${computerChoice.toLowerCase()}!`;
-  }
-  if (
-    (computerChoice === "ROCK" && playerChoice === "SCISSORS") ||
-    (computerChoice === "SCISSORS" && playerChoice === "PAPER") ||
-    (computerChoice === "PAPER" && playerChoice === "ROCK")
-  ) {
-    computerScore++;
-    return `You lose, ${computerChoice.toLowerCase()} beats ${playerChoice.toLowerCase()}!`;
+  if (playerScore < 5 && computerScore < 5) {
+    computerChoice = getComputerChoice();
+    console.log(`Player: ${playerChoice}`);
+    console.log(`Computer: ${computerChoice}`);
+    // playRound(playerChoice, computerChoice);
   }
 }
 
 // writing function to play a game TO5
 
-function playGame() {
-  playRound(playerChoice, computerChoice);
-  console.log(
-    `Your score: ${playerScore}.\n\nComputer score: ${computerScore}\n`
-  );
-  if (playerScore < 5 && computerScore < 5) {
-    playGame();
-  } else {
-    gameOver();
-  }
-}
+// function playGame() {
+//   playRound(playerChoice, computerChoice);
+//   console.log(
+//     `Your score: ${playerScore}.\n\nComputer score: ${computerScore}\n`
+//   );
+//   if (playerScore < 5 && computerScore < 5) {
+//     playGame();
+//   } else {
+//     gameOver();
+//   }
+// }
 
 /* Helper functions */
 
