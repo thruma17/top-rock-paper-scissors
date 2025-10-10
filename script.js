@@ -35,6 +35,7 @@ function playRound(playerChoice, computerChoice) {
   console.log(roundWinner);
   console.log(playerScore);
   console.log(computerScore);
+  updateScore();
 }
 
 // creating function to get computer's choice
@@ -74,6 +75,16 @@ function buttonClicked(playerChoice) {
   } else {
     console.log(`Game Over!`);
   }
+}
+
+// creating function to update score
+
+playerScorePara = document.getElementById(`playerScore`);
+computerScorePara = document.getElementById(`computerScore`);
+
+function updateScore() {
+  playerScorePara.textContent = `Player: ${playerScore}`;
+  computerScorePara.textContent = `Computer: ${computerScore}`;
 }
 
 // writing function to play a game TO5
