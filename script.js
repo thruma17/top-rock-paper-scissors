@@ -79,10 +79,19 @@ function buttonClicked(playerChoice) {
 
 // creating function to update score
 
-playerScorePara = document.getElementById(`playerScore`);
-computerScorePara = document.getElementById(`computerScore`);
+const playerScorePara = document.getElementById("playerScore");
+const computerScorePara = document.getElementById("computerScore");
 
 function updateScore() {
+  switch (roundWinner) {
+    case `tie`:
+      return (scoreInfo.textContent = "It's a tie!");
+    case `player`:
+      return (scoreInfo.textContent = "You won!");
+    case `tie`:
+      return (scoreInfo.textContent = "You lost!");
+  }
+
   playerScorePara.textContent = `Player: ${playerScore}`;
   computerScorePara.textContent = `Computer: ${computerScore}`;
 }
