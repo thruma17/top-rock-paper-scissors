@@ -17,6 +17,9 @@ const scissorsBtn = document.getElementById("scissorsBtn");
 let playerScore = 0;
 let computerScore = 0;
 let roundWinner = ``;
+const roundTie = `Pareggio! Prova ancora...`;
+const roundWPlayer = `Hai vinto`;
+const roundWComputer = `Hai perso`;
 
 // writing function to play one round
 // asks player to choose weapon
@@ -25,7 +28,7 @@ let roundWinner = ``;
 
 function playRound(playerChoice, computerChoice) {
   if (playerChoice === computerChoice) {
-    roundWinner = `Pareggio! Prova ancora...`;
+    roundWinner = roundTie;
   }
   if (
     (playerChoice === "SASSO" && computerChoice === "FORBICE") ||
@@ -33,7 +36,7 @@ function playRound(playerChoice, computerChoice) {
     (playerChoice === "CARTA" && computerChoice === "SASSO")
   ) {
     playerScore++;
-    roundWinner = `Hai vinto, ${playerChoice.toLowerCase()} batte ${computerChoice.toLowerCase()}!`;
+    roundWinner = `${roundWPlayer}, ${playerChoice.toLowerCase()} batte ${computerChoice.toLowerCase()}!`;
   }
   if (
     (computerChoice === "SASSO" && playerChoice === "FORBICE") ||
@@ -41,7 +44,7 @@ function playRound(playerChoice, computerChoice) {
     (computerChoice === "CARTA" && playerChoice === "SASSO")
   ) {
     computerScore++;
-    roundWinner = `Hai perso, ${computerChoice.toLowerCase()} batte ${playerChoice.toLowerCase()}!`;
+    roundWinner = `${roundWComputer}, ${computerChoice.toLowerCase()} batte ${playerChoice.toLowerCase()}!`;
   }
   console.log(roundWinner);
   console.log(playerScore);
