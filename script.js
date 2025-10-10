@@ -1,8 +1,8 @@
 console.clear();
 
 /* DOM variables */
-const scoreInfo = document.getElementById("scoreInfo");
-const scoreMessage = document.getElementById("scoreMessage");
+const roundWinnerMessage = document.getElementById("roundWinnerMessage");
+const roundChoicesMessage = document.getElementById("roundChoicesMessage");
 const playerScorePara = document.getElementById("playerScore");
 const computerScorePara = document.getElementById("computerScore");
 const playerWeapon = document.getElementById("playerWeapon");
@@ -18,8 +18,8 @@ let playerScore = 0;
 let computerScore = 0;
 let roundWinner = ``;
 const roundTie = `Pareggio! Prova ancora...`;
-const roundWPlayer = `Hai vinto`;
-const roundWComputer = `Hai perso`;
+const roundWPlayer = `Hai vinto!`;
+const roundWComputer = `Hai perso!`;
 
 // writing function to play one round
 // asks player to choose weapon
@@ -36,7 +36,8 @@ function playRound(playerChoice, computerChoice) {
     (playerChoice === "CARTA" && computerChoice === "SASSO")
   ) {
     playerScore++;
-    roundWinner = `${roundWPlayer}, ${playerChoice.toLowerCase()} batte ${computerChoice.toLowerCase()}!`;
+    roundWinner = roundWPlayer;
+    /*`, ${playerChoice.toLowerCase()} batte ${computerChoice.toLowerCase()}!`*/
   }
   if (
     (computerChoice === "SASSO" && playerChoice === "FORBICE") ||
@@ -44,11 +45,9 @@ function playRound(playerChoice, computerChoice) {
     (computerChoice === "CARTA" && playerChoice === "SASSO")
   ) {
     computerScore++;
-    roundWinner = `${roundWComputer}, ${computerChoice.toLowerCase()} batte ${playerChoice.toLowerCase()}!`;
+    roundWinner = roundWComputer;
+    /*`, ${computerChoice.toLowerCase()} batte ${playerChoice.toLowerCase()}!` */
   }
-  console.log(roundWinner);
-  console.log(playerScore);
-  console.log(computerScore);
   updateScore();
 }
 
@@ -77,13 +76,36 @@ rockBtn.addEventListener(`click`, () => buttonClicked(`SASSO`));
 function buttonClicked(playerChoice) {
   if (playerScore < 5 && computerScore < 5) {
     computerChoice = getComputerChoice();
-    console.log(`Player: ${playerChoice}`);
-    console.log(`Computer: ${computerChoice}`);
     playRound(playerChoice, computerChoice);
+    updateRoundWinner();
     updateChoices(playerChoice, computerChoice);
+    updateScore();
   } else {
-    console.log(`Game over!`);
+    roundWinnerMessage.textContent = "Game over!";
   }
+}
+
+// creating function to announce round winner
+
+function updateRoundWinner() {
+  switch (roundWinner) {
+    case `${roundTie}`:
+      roundWinnerMessage.textContent = "Pareggio!";
+      break;
+    case `${roundWPlayer}`:
+      roundWinnerMessage.textContent = "Hai vinto!";
+      break;
+    case `${roundWComputer}`:
+      roundWinnerMessage.textContent = "Hai perso!";
+      break;
+  }
+}
+
+// creating function to update score
+
+function updateScore() {
+  playerScorePara.textContent = `${playerScore}`;
+  computerScorePara.textContent = `${computerScore}`;
 }
 
 // creating function to update round choices images
@@ -125,22 +147,6 @@ function updateChoices(playerChoice, computerChoice) {
 //         break;
 //     }
 // }
-
-// creating function to update score
-
-function updateScore() {
-  switch (roundWinner) {
-    case `tie`:
-      return (scoreInfo.textContent = "Pareggio!");
-    case `player`:
-      return (scoreInfo.textContent = "Hai vinto!");
-    case `computer`:
-      return (scoreInfo.textContent = "Hai perso!");
-  }
-
-  playerScorePara.textContent = `${playerScore}`;
-  computerScorePara.textContent = `${computerScore}`;
-}
 
 // writing function to play a game TO5
 
