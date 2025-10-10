@@ -34,7 +34,6 @@ function playRound(playerChoice, computerChoice) {
   ) {
     playerScore++;
     roundWinner = `roundWPlayer`;
-    /*`, ${playerChoice.toLowerCase()} batte ${computerChoice.toLowerCase()}!`*/
   }
   if (
     (computerChoice === "SASSO" && playerChoice === "FORBICE") ||
@@ -43,7 +42,6 @@ function playRound(playerChoice, computerChoice) {
   ) {
     computerScore++;
     roundWinner = `roundWComputer`;
-    /*`, ${computerChoice.toLowerCase()} batte ${playerChoice.toLowerCase()}!` */
   }
   updateRoundWinner(roundWinner, playerChoice, computerChoice);
 }
@@ -68,17 +66,35 @@ paperBtn.addEventListener(`click`, () => buttonClicked(`CARTA`));
 scissorsBtn.addEventListener(`click`, () => buttonClicked(`FORBICE`));
 rockBtn.addEventListener(`click`, () => buttonClicked(`SASSO`));
 
+// remove event listeners when game is over
+
+// creating function for game over
+
+function gameOver() {
+  // show game over message
+  roundWinnerMessage.textContent = "Game over!";
+  roundChoicesMessage.textContent = `Inizia una nuova partita`;
+
+  // declare game winner
+  if (playerScore === 5) {
+    playerWeapon.src = "images/trophy.png";
+    computerWeapon.src = "images/loser.png";
+  } else {
+    computerWeapon.src = "images/trophy.png";
+    playerWeapon.src = "images/loser.png";
+  }
+}
+
 // creating function to get player's choice
 
 function buttonClicked(playerChoice) {
-  if (playerScore < 5 && computerScore < 5) {
+  if (playerScore === 5 || computerScore === 5) {
+    gameOver();
+  } else {
     computerChoice = getComputerChoice();
     playRound(playerChoice, computerChoice);
     updateChoices(playerChoice, computerChoice);
     updateScore();
-  } else {
-    roundWinnerMessage.textContent = "Game over!";
-    roundChoicesMessage.textContent = `Aggiorna la pagina per una nuova partita`;
   }
 }
 
@@ -138,33 +154,6 @@ function updateScore() {
   playerScorePara.textContent = `${playerScore}`;
   computerScorePara.textContent = `${computerScore}`;
 }
-
-// creating function for game over
-
-// function isGameOver() {
-// switch (playerScore > computerScore) {
-//       case `true`:
-//         playerWeapon.src = "images/trophy.png";
-//         break;
-//       case `false`:
-//         computerWeapon.src = "images/loser.png";
-//         break;
-//     }
-// }
-
-// writing function to play a game TO5
-
-// function playGame() {
-//   playRound(playerChoice, computerChoice);
-//   console.log(
-//     `Your score: ${playerScore}.\n\nComputer score: ${computerScore}\n`
-//   );
-//   if (playerScore < 5 && computerScore < 5) {
-//     playGame();
-//   } else {
-//     gameOver();
-//   }
-// }
 
 /* ---------- Helper functions ---------- */
 
