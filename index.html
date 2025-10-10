@@ -4,44 +4,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock, Paper, Scissors</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header class="header">
-      <h1 class="title">ROCK PAPER SCISSORS</h1>
-    </header>
-    <div class="scoreboard">
-      <h2 class="score-info" id="scoreInfo">Choose your weapon</h2>
-      <h3 class="score-message" id="scoreMessage">
-        First to score 5 points wins the game
-      </h3>
-      <div class="scores-container">
-        <div class="score-box">
-          <div class="sign" id="playerSign">
-            <img src="images/question-mark.png" alt="?" />
+    <main>
+      <header class="header">
+        <h1 class="title">ROCK PAPER SCISSORS</h1>
+      </header>
+      <div class="scoreboard">
+        <h2 class="score-info" id="scoreInfo">Choose your weapon</h2>
+        <h3 class="score-message" id="scoreMessage">
+          First to score 5 points wins the game
+        </h3>
+        <div class="scores-container">
+          <div class="score-box">
+            <div class="sign" id="playerSign">
+              <img src="images/question-mark.png" alt="?" />
+            </div>
+            <p class="score" id="playerScore">Player: 0</p>
           </div>
-          <p class="score" id="playerScore">Player: 0</p>
-        </div>
-        <div class="score-box">
-          <div class="sign" id="computerSign">
-            <img src="images/question-mark.png" alt="?" />
+          <div class="score-box">
+            <div class="sign" id="computerSign">
+              <img src="images/question-mark.png" alt="?" />
+            </div>
+            <p class="score" id="computerScore">Computer: 0</p>
           </div>
-          <p class="score" id="computerScore">Computer: 0</p>
         </div>
       </div>
-    </div>
-    <div id="buttons">
-      <button id="rockBtn" class="btn btn-square">
-        <div class="sign"><img src="images/rock.png" alt="ROCK" /></div>
-      </button>
-      <button id="paperBtn" class="btn btn-square">
-        <div class="sign"><img src="images/paper.png" alt="PAPER" /></div>
-      </button>
-      <button id="scissorsBtn" class="btn btn-square">
-        <div class="sign"><img src="images/scissors.png" alt="SCISSORS" /></div>
-      </button>
-    </div>
-    <div id="container-results"></div>
+      <div id="buttons" class="weapons-container">
+        <button id="rockBtn" class="btn btn-square">
+          <div class="sign"><img src="images/rock.png" alt="ROCK" /></div>
+        </button>
+        <button id="paperBtn" class="btn btn-square">
+          <div class="sign"><img src="images/paper.png" alt="PAPER" /></div>
+        </button>
+        <button id="scissorsBtn" class="btn btn-square">
+          <div class="sign">
+            <img src="images/scissors.png" alt="SCISSORS" />
+          </div>
+        </button>
+      </div>
+      <div id="container-results"></div>
+    </main>
     <footer class="footer">
       <p>
         Copyright ©
@@ -49,14 +53,14 @@
           document.write(new Date().getFullYear());
         </script>
         thruma17
+        <a href="https://github.com/thruma17" target="_blank" rel="noopener">
+          <img
+            class="github-logo"
+            src="github-mark/github-mark.svg"
+            alt="github-logo"
+          />
+        </a>
       </p>
-      <a href="https://github.com/thruma17" target="_blank" rel="noopener">
-        <img
-          class="github-logo"
-          src="github-mark/github-mark.svg"
-          alt="github-logo"
-        />
-      </a>
       <div id="credits" class="credits">
         <p>
           Icons created by
