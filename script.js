@@ -101,13 +101,6 @@ function updateRoundWinner() {
   }
 }
 
-// creating function to update score
-
-function updateScore() {
-  playerScorePara.textContent = `${playerScore}`;
-  computerScorePara.textContent = `${computerScore}`;
-}
-
 // creating function to update round choices images
 
 function updateChoices(playerChoice, computerChoice) {
@@ -133,6 +126,13 @@ function updateChoices(playerChoice, computerChoice) {
       computerWeapon.src = "images/rock.png";
       break;
   }
+}
+
+// creating function to update score
+
+function updateScore() {
+  playerScorePara.textContent = `${playerScore}`;
+  computerScorePara.textContent = `${computerScore}`;
 }
 
 // creating function for game over
