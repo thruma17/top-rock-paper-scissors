@@ -2,7 +2,12 @@
   text-align: center;
 }
 
+html {
+  min-height: 100vh;
+}
+
 body {
+  margin: 0;
   display: flex;
   flex-direction: column;
 }
@@ -10,6 +15,8 @@ body {
 main {
   display: flex;
   flex-direction: column;
+  height: 90vh;
+  justify-content: center;
 }
 
 div.choice-container,
@@ -37,4 +44,8 @@ div.weapon img {
 
 img.github-logo {
   max-width: 24px;
+}
+
+footer {
+  height: 10vh;
 }
