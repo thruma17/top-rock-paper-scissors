@@ -1,8 +1,6 @@
 * {
   text-align: center;
-}
-
-html {
+  box-sizing: border-box;
 }
 
 body {
@@ -11,7 +9,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 div.choice-container,
@@ -37,10 +35,21 @@ div.weapon img {
   max-height: 10vh;
 }
 
+a {
+  text-decoration: none;
+  color: initial;
+}
+
 img.github-logo {
   max-width: 24px;
 }
 
 footer {
+  display: flex;
+  align-items: center;
   height: 10vh;
+}
+
+footer p {
+  margin: 10px;
 }
